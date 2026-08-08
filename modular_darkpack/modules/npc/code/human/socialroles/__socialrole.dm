@@ -283,10 +283,11 @@
 			var/datum/anthro_type/F = pick(subtypesof(/datum/anthro_type))
 			socialrole.coolfurry = new F()
 
-			if (socialrole.coolfurry.bald && dna.species.id != SPECIES_DEMIHUMAN)
-				socialrole.male_hair = list("Bald")
-				socialrole.female_hair = list("Bald")
-				socialrole.male_facial = list("Shaved")
+			if (socialrole.coolfurry.bald_chance > 0 && dna.species.id != SPECIES_DEMIHUMAN)
+				if (prob(socialrole.coolfurry.bald_chance))
+					socialrole.male_hair = list("Bald")
+					socialrole.female_hair = list("Bald")
+					socialrole.male_facial = list("Shaved")
 
 			var/list/color_scheme = pick(socialrole.coolfurry.color_schemes)
 
@@ -328,7 +329,6 @@
 			dna.features[FEATURE_WINGS_NOCTURNE] = SPRITE_ACCESSORY_NONE
 
 			regenerate_organs()
-
 		// NOCTURNE ADDITION END
 
 		var/list/m_names = list()
@@ -350,7 +350,7 @@
 		age = rand(socialrole.min_age, socialrole.max_age)
 		skin_tone = pick(socialrole.s_tones)
 
-		if (age >= 55)
+		if (age >= 55 && dna.species.id != SPECIES_ANTHRO) // NOCTURNE EDIT - ORIGINAL: if (age >= 55)
 			set_haircolor("#a2a2a2")
 			set_facial_haircolor(hair_color)
 		else
@@ -380,7 +380,7 @@
 		if (prob(25))
 			socks = random_socks()
 
-		update_body()
+		update_body(is_creating = (dna.species.id == SPECIES_ANTHRO)) // NOCTURNE EDIT - ORIGINAL: update_body()
 
 	// this should be refactored into just... applying a premade outfit
 	var/datum/outfit/O = new()

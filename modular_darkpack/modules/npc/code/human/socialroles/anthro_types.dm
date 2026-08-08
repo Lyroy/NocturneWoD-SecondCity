@@ -18,7 +18,7 @@
 	var/list/horns = list(SPRITE_ACCESSORY_NONE)
 	var/list/frills = list(SPRITE_ACCESSORY_NONE)
 	var/list/pintles = list(SPRITE_ACCESSORY_NONE)
-	var/bald = FALSE
+	var/bald_chance = 0
 
 /datum/anthro_type/canine
 	tails = list(
@@ -101,7 +101,6 @@
 		"Barbed, Knotted - Large (Sheath)"
 	)
 
-/*
 /datum/anthro_type/lizard
 	color_schemes = list( //lizards get their own assortment
 		list("#666633", "#666633", "#666633"), //Gross Green
@@ -112,86 +111,92 @@
 	)
 
 	tails = list(
-		/datum/sprite_accessory/nocturne/tails/smooth,
-		/datum/sprite_accessory/nocturne/tails/spikes,
-		/datum/sprite_accessory/nocturne/tails/ltiger,
-		/datum/sprite_accessory/nocturne/tails/axolotl,
-		/datum/sprite_accessory/nocturne/tails/furdragon,
-		/datum/sprite_accessory/nocturne/tails/deathclaw,
-		/datum/sprite_accessory/nocturne/tails/nightstalker,
-		/datum/sprite_accessory/nocturne/tails/snaketail
+		"Lizard (Short)",
+		"Lizard (Smooth)",
+		"Lizard (Spikes)",
+		"Lizard (Tiger)",
+		"Axolotl",
+		"Furred Dragon",
+		"Deathclaw",
+		"Nightstalker",
+		"Snake"
 	)
 
 	snouts = list(
-		/datum/sprite_accessory/nocturne/snouts/sharplight,
-		/datum/sprite_accessory/nocturne/snouts/roundlight
+		"Lizard (Sharp)",
+		"Lizard (Round)"
 	)
 
 	pintles = list(
-		/datum/sprite_accessory/nocturne/pintle/hemi_medium,
-		/datum/sprite_accessory/nocturne/pintle/hemi_small,
-		/datum/sprite_accessory/nocturne/pintle/hemiknot_medium,
-		/datum/sprite_accessory/nocturne/pintle/hemiknot_small,
-		/datum/sprite_accessory/nocturne/pintle/hemiknotsheath_medium,
-		/datum/sprite_accessory/nocturne/pintle/hemiknotsheath_small,
-		/datum/sprite_accessory/nocturne/pintle/hemislit_medium,
-		/datum/sprite_accessory/nocturne/pintle/hemislit_small
+		"Hemi - Average",
+		"Hemi - Average (Slit)",
+		"Hemi - Large",
+		"Hemi - Large (Slit)",
+		"Hemi, Knotted - Average",
+		"Hemi, Knotted - Average (Sheath)",
+		"Hemi, Knotted - Large",
+		"Hemi, Knotted - Large (Sheath)",
+		"Tapered - Average",
+		"Tapered - Average (Slit)",
+		"Tapered - Large",
+		"Tapered - Large (Slit)",
+		"Flared - Average",
+		"Flared - Large"
 	)
 
 	frills = list(
-		/datum/sprite_accessory/nocturne/frills/aqua,
-		/datum/sprite_accessory/nocturne/frills/big,
-		/datum/sprite_accessory/nocturne/frills/cobraears,
-		/datum/sprite_accessory/nocturne/frills/cobrahood,
-		/datum/sprite_accessory/nocturne/frills/divinity,
-		/datum/sprite_accessory/nocturne/frills/earlike,
-		/datum/sprite_accessory/nocturne/frills/earlike_angled,
-		/datum/sprite_accessory/nocturne/frills/earlike_thick,
-		/datum/sprite_accessory/nocturne/frills/horns,
-		/datum/sprite_accessory/nocturne/frills/hornsdouble,
-		/datum/sprite_accessory/nocturne/frills/none,
-		/datum/sprite_accessory/nocturne/frills/short,
-		/datum/sprite_accessory/nocturne/frills/simple,
-		/datum/sprite_accessory/nocturne/frills/split,
-		/datum/sprite_accessory/nocturne/frills/split_big,
-		/datum/sprite_accessory/nocturne/frills/split_slim
+		"Aquatic",
+		"Big",
+		"Cobra",
+		"Cobra (Ears)",
+		"Divinity",
+		"Earlike",
+		"Earlike (Angled)",
+		"Earlike (Thick)",
+		"Horns",
+		"Horns (Double)",
+		"Short",
+		"Simple",
+		"Split",
+		"Split (Big)",
+		"Split (Slim)",
+		SPRITE_ACCESSORY_NONE
 	)
 
 	horns = list(
-		/datum/sprite_accessory/nocturne/horns/bigcurly,
-		/datum/sprite_accessory/nocturne/horns/broken,
-		/datum/sprite_accessory/nocturne/horns/curled,
-		/datum/sprite_accessory/nocturne/horns/doublehorns,
-		/datum/sprite_accessory/nocturne/horns/dragon,
-		/datum/sprite_accessory/nocturne/horns/drake,
-		/datum/sprite_accessory/nocturne/horns/faceguard,
-		/datum/sprite_accessory/nocturne/horns/guilmon,
-		/datum/sprite_accessory/nocturne/horns/great,
-		/datum/sprite_accessory/nocturne/horns/halo,
-		/datum/sprite_accessory/nocturne/horns/lbroken,
-		/datum/sprite_accessory/nocturne/horns/lifted,
-		/datum/sprite_accessory/nocturne/horns/longhorns,
-		/datum/sprite_accessory/nocturne/horns/marauder,
-		/datum/sprite_accessory/nocturne/horns/none,
-		/datum/sprite_accessory/nocturne/horns/outstretched,
-		/datum/sprite_accessory/nocturne/horns/oni,
-		/datum/sprite_accessory/nocturne/horns/oni_large,
-		/datum/sprite_accessory/nocturne/horns/ram,
-		/datum/sprite_accessory/nocturne/horns/ramalt,
-		/datum/sprite_accessory/nocturne/horns/ramcurled,
-		/datum/sprite_accessory/nocturne/horns/ramcurledalt,
-		/datum/sprite_accessory/nocturne/horns/ramcurledsmall,
-		/datum/sprite_accessory/nocturne/horns/ramcurledsmallalt,
-		/datum/sprite_accessory/nocturne/horns/ramcurledsmallalt2,
-		/datum/sprite_accessory/nocturne/horns/rbroken,
-		/datum/sprite_accessory/nocturne/horns/sheep,
-		/datum/sprite_accessory/nocturne/horns/short,
-		/datum/sprite_accessory/nocturne/horns/sideswept,
-		/datum/sprite_accessory/nocturne/horns/simple,
-		/datum/sprite_accessory/nocturne/horns/stabbers,
-		/datum/sprite_accessory/nocturne/horns/tiebhorns,
-		/datum/sprite_accessory/nocturne/horns/tiebhornsalt
+		"Curled (Big)",
+		"Broken",
+		"Curled",
+		"Double",
+		"Dragon",
+		"Drake",
+		"Faceguard",
+		"Guilmon",
+		"Great",
+		"Halo",
+		"Broken (Left)",
+		"Lifted",
+		"Longhorns",
+		"Marauder",
+		"Outstretched",
+		"Oni",
+		"Oni (Large)",
+		"Ram",
+		"Ram (Alt)",
+		"Ram (Curled)",
+		"Ram (Curled, Alt)",
+		"Ram (Curled, Small)",
+		"Ram (Curled, Small, Alt)",
+		"Ram (Curled, Small, Alt 2)",
+		"Broken (Right)",
+		"Sheep",
+		"Short",
+		"Sideswept",
+		"Simple",
+		"Stabbers",
+		"Tiefling",
+		"Tiefling (Alt)",
+		SPRITE_ACCESSORY_NONE
 	)
 
-	bald = TRUE
-*/
+	bald_chance = 90
