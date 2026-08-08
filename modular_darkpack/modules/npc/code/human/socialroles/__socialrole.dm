@@ -317,6 +317,8 @@
 					dna.features[FEATURE_PINTLE_NOCTURNE_COLORS] = list(color_scheme[1], "#A73A3A", "#A73A3A")
 					dna.features[FEATURE_TESTICLES_NOCTURNE_COLORS] = color_scheme
 			else
+				dna.features[FEATURE_BREASTS_NOCTURNE] = "Medium"
+				dna.features[FEATURE_BREASTS_NOCTURNE_COLORS] = color_scheme
 				if(prob(20)) //GULP?!!!
 					dna.features[FEATURE_PINTLE_NOCTURNE] = pick(socialrole.coolfurry.pintles)
 					dna.features[FEATURE_TESTICLES_NOCTURNE] = "Medium"
